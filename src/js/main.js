@@ -51,6 +51,28 @@ class App {
     this.sunTimesView.init();
     this.myPlansView.init();
     this.headerClock.start();
+
+    // Mobile menu toggle
+const menuBtn = document.getElementById("mobile-menu-btn");
+const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("sidebar-overlay");
+
+menuBtn?.addEventListener("click", () => {
+  sidebar?.classList.add("open");
+  overlay?.classList.add("active");
+});
+
+overlay?.addEventListener("click", () => {
+  sidebar?.classList.remove("open");
+  overlay?.classList.remove("active");
+});
+
+sidebar?.querySelectorAll(".nav-item").forEach((item) => {
+  item.addEventListener("click", () => {
+    sidebar.classList.remove("open");
+    overlay?.classList.remove("active");
+  });
+});
   }
 }
 
